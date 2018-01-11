@@ -10,13 +10,13 @@ from pugorugh.views import UserRegisterView, RetrieveUpdateUserPref
 # API endpoints
 urlpatterns = format_suffix_patterns([
     url(r'^api/user/login/$', obtain_auth_token, name='login-user'),
+    url(r'^api/user/preferences/$', RetrieveUpdateUserPref.as_view(),
+        name='userpref-detail'),
     url(r'^api/user/$', UserRegisterView.as_view(), name='register-user'),
     url(r'^favicon\.ico$',
         RedirectView.as_view(
             url='/static/icons/favicon.ico',
             permanent=True
         )),
-    url(r'api/user/preferences/$', RetrieveUpdateUserPref.as_view(),
-        name='userpref-detail'),
     url(r'^$', TemplateView.as_view(template_name='index.html'))
 ])

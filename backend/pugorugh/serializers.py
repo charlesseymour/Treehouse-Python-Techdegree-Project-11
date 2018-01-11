@@ -37,7 +37,6 @@ class UserPrefSerializer(serializers.ModelSerializer):
             'user': {'write_only': True}
         }
         fields = (
-            'user',
             'age',
             'gender',
             'size',
