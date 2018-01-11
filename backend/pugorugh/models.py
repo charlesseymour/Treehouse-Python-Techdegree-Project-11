@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from multiselectfield import MultiSelectField
 
 class Dog(models.Model):
     name = models.CharField(max_length=20)
@@ -64,8 +65,7 @@ class UserPref(models.Model):
         (ADULT, 'Adult'),
         (SENIOR, 'Senior'),
     )
-    age = models.CharField(
-        max_length=1,
+    age = MultiSelectField(
         choices=AGE_CHOICES,
         default=BABY
     )
@@ -75,8 +75,7 @@ class UserPref(models.Model):
         (MALE, 'Male'),
         (FEMALE, 'Female'),
     )
-    gender = models.CharField(
-        max_length=1,
+    gender = MultiSelectField(
         choices=GENDER_CHOICES,
         default=MALE
     )
@@ -90,8 +89,8 @@ class UserPref(models.Model):
         (LARGE, 'Large'),
         (EXTRA_LARGE, 'Extra large'),
     )
-    size = models.CharField(
-        max_length=1,
+    size = MultiSelectField(
+        max_length=10,
         choices=SIZE_CHOICES,
         default=SMALL
     )
