@@ -25,7 +25,12 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
         
     def put(self, request, format=None):
         user_pref = self.get_object()
+        data = request.data
+        data['age'] = data['age'].split(',')
+        data['gender'] = data['gender'].split(',')
+        data['size'] = data['size'].split(',')
         serializer = serializers.UserPrefSerializer(user_pref, data=request.data)
+        print(serializer.is_valid())
         if serializer.is_valid():
             serializer.save(user=self.request.user)
             return Response(serializer.data)
