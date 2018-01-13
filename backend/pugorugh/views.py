@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
 from rest_framework import permissions, status
+from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView
 from rest_framework.response import Response
 
@@ -29,7 +30,8 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
         data['age'] = data['age'].split(',')
         data['gender'] = data['gender'].split(',')
         data['size'] = data['size'].split(',')
-        serializer = serializers.UserPrefSerializer(user_pref, data=request.data)
+        serializer = serializers.UserPrefSerializer(user_pref,
+                                                    data=request.data)
         print(serializer.is_valid())
         if serializer.is_valid():
             serializer.save(user=self.request.user)
@@ -37,5 +39,14 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-
+# class ListUndecidedDog(APIView):
+    # def get(self, request, format=None):
+        # user = self.request.user
+        # user_pref = models.UserPref.objects.get(user=user)
+        #  preferred_dogs = Dog.objects.filter(
+        #                       gender__in=user_pref.gender,
+        #                       size__in=user_pref.size)
+        # dogs = models.Dog.objects.filter(
+            
+    
     

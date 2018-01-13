@@ -56,6 +56,22 @@ class Dog(models.Model):
         choices=SIZE_CHOICES,
         default=UNKNOWN
     )
+    age_stage = models.CharField(max_length=1, default='b')
+    
+    @property
+    def get_age_stage(self):
+        if self.age < 12:
+            return 'b'
+        elif self.age < 36:
+            return 'y'
+        elif self.age < 72:
+            return 'a'
+        else:
+            return 's'
+            
+    def save(self, *args, **kwarg):
+        self.age_stage = self.get_age_stage
+        super(Dog, self).save(*args, **kwarg)
     
     
 class UserDog(models.Model):
@@ -63,21 +79,17 @@ class UserDog(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     status = models.CharField(
         max_length=1, 
-        choices=STATUS_CHOICES,
-        default=LIKED
+        choices=STATUS_CHOICES
     )
     
 class UserPref(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     age = MultiSelectField(
-        choices=AGE_CHOICES,
-        #default=BABY
+        choices=AGE_CHOICES
     )
     gender = MultiSelectField(
-        choices=GENDER_CHOICES,
-        #default=MALE
+        choices=GENDER_CHOICES
     )
     size = MultiSelectField(
-        choices=SIZE_CHOICES,
-        #default=SMALL
+        choices=SIZE_CHOICES
     )
