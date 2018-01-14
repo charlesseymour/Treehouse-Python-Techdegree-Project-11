@@ -25,6 +25,11 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
             user = self.request.user
         )
         
+    def get(self, request):
+        user_pref = self.get_object()
+        serializer = serializers.UserPrefSerializer(user_pref)
+        return Response(serializer.data)
+        
     def put(self, request, format=None):
         data = request.data
         data['age'] = data['age'].split(',')
