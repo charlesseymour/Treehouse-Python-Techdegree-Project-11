@@ -51,14 +51,29 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
     
-# class ListUndecidedDog(APIView):
-    # def get(self, request, format=None):
-        # user = self.request.user
-        # user_pref = models.UserPref.objects.get(user=user)
-        #  preferred_dogs = Dog.objects.filter(
-        #                       gender__in=user_pref.gender,
-        #                       size__in=user_pref.size)
-        # dogs = models.Dog.objects.filter(
+class GetUndecidedDog(APIView):
+    def get(self, request, pk=None, format=None):
+        user = self.request.user
+        user_pref = models.UserPref.objects.get(user=user)
+        preferred_dogs = models.Dog.objects.filter(
+                               gender__in=user_pref.gender,
+                               size__in=user_pref.size,
+                               age_stage__in=user_pref.age
+                               )
+        liked_dogs = models.Dog.objects.filter(userdog__status__exact='l',
+                                        userdog__user_id__exact=user.id)
+        disliked_dogs = models.Dog.objects.filter(userdog__status__exact='d',
+                                           userdog__user_id__exact=user.id)
+        if pk == '-1':
+            undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).first()
+        else:
+            undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).get(id__in=preferred_dogs, id=pk)
+        serializer = serializers.DogSerializer(undecided_dog)
+        return Response(serializer.data)
+        
+        
+        
+        
             
     
     
