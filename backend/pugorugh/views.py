@@ -4,7 +4,8 @@ from django.http import Http404
 
 from rest_framework import permissions, status
 from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import (CreateAPIView, RetrieveUpdateAPIView,
+                                     RetrieveAPIView)
 from rest_framework.response import Response
 
 from . import serializers, models
@@ -52,7 +53,7 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
             
     
 class GetUndecidedDog(APIView):
-    def get(self, request, pk=None, format=None):
+    def get(self, request, pk, format=None):
         user = self.request.user
         user_pref = models.UserPref.objects.get(user=user)
         preferred_dogs = models.Dog.objects.filter(
@@ -64,12 +65,14 @@ class GetUndecidedDog(APIView):
                                         userdog__user_id__exact=user.id)
         disliked_dogs = models.Dog.objects.filter(userdog__status__exact='d',
                                            userdog__user_id__exact=user.id)
-        if pk == '-1':
+        pk = int(pk)
+        if pk == -1:
             undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).first()
         else:
-            undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).get(id__in=preferred_dogs, id=pk)
+            undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).filter(id__gt=pk).first()
         serializer = serializers.DogSerializer(undecided_dog)
         return Response(serializer.data)
+        
         
         
         
