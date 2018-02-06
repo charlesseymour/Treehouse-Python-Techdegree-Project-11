@@ -76,7 +76,37 @@ class GetUndecidedDog(APIView):
         serializer = serializers.DogSerializer(undecided_dog)
         return Response(serializer.data)
         
+
+class GetLikedDog(APIView):
+    def get(self, request, pk, format=None):
+        user = self.request.user
+        liked_dogs = models.Dog.objects.filter(userdog__status__exact='l',
+                                        userdog__user_id__exact=user.id)
+        pk = int(pk)
+        if pk == -1:
+            liked_dog = liked_dogs.first()
+        else:
+            liked_dog = liked_dogs.filter(id__gt=pk).first()
+        if not liked_dog:
+            raise Http404
+        serializer = serializers.DogSerializer(liked_dog)
+        return Response(serializer.data)
         
+
+class GetDislikedDog(APIView):
+    def get(self, request, pk, format=None):
+        user = self.request.user
+        disliked_dogs = models.Dog.objects.filter(userdog__status__exact='d',
+                                           userdog__user_id__exact=user.id)
+        pk = int(pk)
+        if pk == -1:
+            disliked_dog = disliked_dogs.first()
+        else:
+            disliked_dog = disliked_dogs.filter(id__gt=pk).first()
+        if not disliked_dog:
+            raise Http404
+        serializer = serializers.DogSerializer(disliked_dog)
+        return Response(serializer.data)
         
         
         

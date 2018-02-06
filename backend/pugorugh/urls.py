@@ -6,7 +6,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.authtoken.views import obtain_auth_token
 
 from pugorugh.views import (UserRegisterView, RetrieveUpdateUserPref,
-                            GetUndecidedDog)
+                            GetUndecidedDog, GetLikedDog, GetDislikedDog)
 
 # API endpoints
 urlpatterns = format_suffix_patterns([
@@ -15,6 +15,8 @@ urlpatterns = format_suffix_patterns([
         name='userpref-detail'),
     url(r'^api/user/$', UserRegisterView.as_view(), name='register-user'),
     url(r'^api/dog/(?P<pk>-?\d+)/undecided/next/$', GetUndecidedDog.as_view(), name='undecided-detail'),
+    url(r'^api/dog/(?P<pk>-?\d+)/liked/next/$', GetLikedDog.as_view(), name='liked-detail'),
+    url(r'^api/dog/(?P<pk>-?\d+)/disliked/next/$', GetDislikedDog.as_view(), name='disliked-detail'),
     url(r'^favicon\.ico$',
         RedirectView.as_view(
             url='/static/icons/favicon.ico',
