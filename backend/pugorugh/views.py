@@ -1,3 +1,5 @@
+from bisect import bisect
+
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from django.http import Http404
@@ -51,7 +53,6 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
-    
 class GetUndecidedDog(APIView):
     def get(self, request, pk, format=None):
         user = self.request.user
@@ -70,6 +71,8 @@ class GetUndecidedDog(APIView):
             undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).first()
         else:
             undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).filter(id__gt=pk).first()
+        if not undecided_dog:
+            raise Http404
         serializer = serializers.DogSerializer(undecided_dog)
         return Response(serializer.data)
         
