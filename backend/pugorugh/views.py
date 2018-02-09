@@ -22,6 +22,7 @@ class UserRegisterView(CreateAPIView):
 class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
     queryset = models.UserPref.objects.all()
     serializer_class = serializers.UserPrefSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     
     def get_object(self):
         return get_object_or_404(
@@ -55,6 +56,7 @@ class RetrieveUpdateUserPref(RetrieveUpdateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
 class GetNextDog(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
     def get(self, request, pk, reaction, format=None):
         user = self.request.user
         user_pref = models.UserPref.objects.get(user=user)
@@ -100,6 +102,7 @@ class GetNextDog(APIView):
 class ReactToDog(UpdateAPIView):
     queryset = models.UserDog.objects.all()
     serializer_class = serializers.UserDogSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     
     def get_object(self):
         return get_object_or_404(
