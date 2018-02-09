@@ -7,7 +7,8 @@ from django.http import Http404
 from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.generics import (CreateAPIView, RetrieveUpdateAPIView,
-                                     RetrieveAPIView)
+                                     RetrieveAPIView, UpdateAPIView,
+                                     DestroyAPIView)
 from rest_framework.response import Response
 
 from . import serializers, models
@@ -107,6 +108,49 @@ class GetDislikedDog(APIView):
             raise Http404
         serializer = serializers.DogSerializer(disliked_dog)
         return Response(serializer.data)
+        
+class ReactToDog(UpdateAPIView):
+    queryset = models.UserDog.objects.all()
+    serializer_class = serializers.UserDogSerializer
+    
+    def get_object(self):
+        return get_object_or_404(
+            self.get_queryset(),
+            user = self.request.user,
+            dog = self.kwargs.get('pk')
+        )
+        
+    def put(self, request, pk, reaction, format=None):
+        reaction = 'l' if reaction == 'liked' else 'd' if reaction == 'disliked' else 'u'
+        dog_id = pk
+        user = self.request.user.id
+        data = {'status': reaction, 'dog': dog_id, 'user': user}
+        try:
+            user_dog = self.get_object()
+            if reaction == 'u':
+                user_dog.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
+            else:
+                serializer = serializers.UserDogSerializer(user_dog, data=data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data)
+                print(serializer.errors)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Http404:
+            serializer = serializers.UserDogSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+'''class MarkDogUndecided(DestroyAPIView):
+    queryset = models.UserDog.objects.all()
+    serializer_class = serializers.UserDogSerializer'''
+    
+    
+            
+    
         
         
         
