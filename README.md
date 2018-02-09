@@ -29,11 +29,11 @@ Version 3.6.0
 - Enter desired username, email, and password
 - Then enter the shell: `python manage.py shell`
 - Get token for superuser: 
-   `>>>from rest_framework.authtoken.models import Token`
-   `>>> from django.contrib.auth.models import User`
-   `>>> user = User.objects.get(id=1)`
-   `>>> token = Token.objects.create(user=user)`
-   `>>> token.key`
+   ```>>>from rest_framework.authtoken.models import Token`
+   >>> from django.contrib.auth.models import User`
+   >>> user = User.objects.get(id=1)`
+   >>> token = Token.objects.create(user=user)`
+   >>> token.key```
 - Save the username, password, and token information.
 
 # Running
