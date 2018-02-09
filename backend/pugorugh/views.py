@@ -143,17 +143,3 @@ class ReactToDog(UpdateAPIView):
                 serializer.save()
                 return Response(serializer.data)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-'''class MarkDogUndecided(DestroyAPIView):
-    queryset = models.UserDog.objects.all()
-    serializer_class = serializers.UserDogSerializer'''
-    
-    
-            
-    
-        
-        
-        
-            
-    
-    
