@@ -7,7 +7,7 @@ from rest_framework.test import APITestCase, APIClient
 
 from .models import Dog, UserPref, UserDog
 
-class MenuTests(WebTest):
+class ModelTests(WebTest):
     def setUp(self):
         Dog.objects.create(
             name='Wanchan',
@@ -79,15 +79,9 @@ class ViewTests(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data['age']), 2)
-        self.assertIn('b', response.data['age'])
-        self.assertIn('y', response.data['age'])
-        self.assertEqual(len(response.data['gender']), 2)
-        self.assertIn('m', response.data['gender'])
-        self.assertIn('f', response.data['gender'])
-        self.assertEqual(len(response.data['size']), 2)
-        self.assertIn('s', response.data['size'])
-        self.assertIn('m', response.data['size'])
+        self.assertCountEqual(response.data['age'], ['b', 'y'])
+        self.assertCountEqual(response.data['gender'], ['m', 'f'])
+        self.assertCountEqual(response.data['size'], ['s', 'm'])
         
     def test_retrieve_user_pref_without_token(self):
         url = reverse('userpref-detail')
@@ -100,7 +94,20 @@ class ViewTests(APITestCase):
         token = Token.objects.get(user__username='temporary')
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         response = self.client.put(url, data, format='json')
-        print(response)
+        user_pref = UserPref.objects.get(user=self.user.id)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(user_pref.age, ['b'])
+        self.assertEqual(user_pref.gender, ['m'])
+        self.assertCountEqual(user_pref.size, ['s', 'm', 'l'])
+        
+    def test_update_user_pref_without_token(self):
+        url = reverse('userpref-detail')
+        data = {'user': self.user.id, 'age': 'b', 'gender': 'm', 'size': 's,m,l'}
+        response = self.client.put(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        
+        
         
         
         
