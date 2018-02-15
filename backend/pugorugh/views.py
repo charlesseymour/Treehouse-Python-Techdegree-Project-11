@@ -72,27 +72,27 @@ class GetNextDog(APIView):
         pk = int(pk)
         if reaction == "undecided":
             if pk == -1:
-                undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).first()
+                undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).order_by('id').first()
             else:
-                undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).filter(id__gt=pk).first()
+                undecided_dog = models.Dog.objects.exclude(id__in=liked_dogs).exclude(id__in=disliked_dogs).filter(id__in=preferred_dogs).filter(id__gt=pk).order_by('id').first()
             if not undecided_dog:
                 raise Http404
             serializer = serializers.DogSerializer(undecided_dog)
             return Response(serializer.data)
         elif reaction == "liked":
             if pk == -1:
-                liked_dog = liked_dogs.first()
+                liked_dog = liked_dogs.order_by('id').first()
             else:
-                liked_dog = liked_dogs.filter(id__gt=pk).first()
+                liked_dog = liked_dogs.filter(id__gt=pk).order_by('id').first()
             if not liked_dog:
                 raise Http404
             serializer = serializers.DogSerializer(liked_dog)
             return Response(serializer.data)
         elif reaction == "disliked":
             if pk == -1:
-                disliked_dog = disliked_dogs.first()
+                disliked_dog = disliked_dogs.order_by('id').first()
             else:
-                disliked_dog = disliked_dogs.filter(id__gt=pk).first()
+                disliked_dog = disliked_dogs.filter(id__gt=pk).order_by('id').first()
             if not disliked_dog:
                 raise Http404
             serializer = serializers.DogSerializer(disliked_dog)

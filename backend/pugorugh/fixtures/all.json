@@ -1,0 +1,671 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "authtoken",
+        "model": "token"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "pugorugh",
+        "model": "dog"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "pugorugh",
+        "model": "userdog"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "pugorugh",
+        "model": "userpref"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 1,
+    "fields": {
+        "name": "Francesca",
+        "image_filename": "1.jpg",
+        "breed": "Labrador",
+        "age": 72,
+        "gender": "f",
+        "size": "l",
+        "age_stage": "s"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 2,
+    "fields": {
+        "name": "Hank",
+        "image_filename": "2.jpg",
+        "breed": "French Bulldog",
+        "age": 14,
+        "gender": "m",
+        "size": "s",
+        "age_stage": "y"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 3,
+    "fields": {
+        "name": "Muffin",
+        "image_filename": "3.jpg",
+        "breed": "Boxer",
+        "age": 24,
+        "gender": "f",
+        "size": "xl",
+        "age_stage": "y"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 4,
+    "fields": {
+        "name": "Bjorn",
+        "image_filename": "4.jpg",
+        "breed": "Swedish Vallhund",
+        "age": 36,
+        "gender": "m",
+        "size": "m",
+        "age_stage": "a"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 5,
+    "fields": {
+        "name": "Hercules",
+        "image_filename": "5.jpg",
+        "breed": "Chihuahua",
+        "age": 96,
+        "gender": "m",
+        "size": "s",
+        "age_stage": "s"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 6,
+    "fields": {
+        "name": "Pez",
+        "image_filename": "6.jpg",
+        "breed": "Unknown Mix",
+        "age": 3,
+        "gender": "m",
+        "size": "m",
+        "age_stage": "b"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 7,
+    "fields": {
+        "name": "Cocoa",
+        "image_filename": "7.jpg",
+        "breed": "Chocolate Labrador Mix",
+        "age": 60,
+        "gender": "f",
+        "size": "l",
+        "age_stage": "a"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 8,
+    "fields": {
+        "name": "Lord Barkley",
+        "image_filename": "8.jpg",
+        "breed": "English Bulldog",
+        "age": 26,
+        "gender": "m",
+        "size": "m",
+        "age_stage": "y"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 9,
+    "fields": {
+        "name": "Sandy",
+        "image_filename": "9.jpg",
+        "breed": "Goldendoodle",
+        "age": 14,
+        "gender": "f",
+        "size": "l",
+        "age_stage": "y"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 10,
+    "fields": {
+        "name": "Cookie",
+        "image_filename": "10.jpg",
+        "breed": "Golden Spaniel Mix",
+        "age": 48,
+        "gender": "f",
+        "size": "m",
+        "age_stage": "a"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 11,
+    "fields": {
+        "name": "Custard",
+        "image_filename": "11.jpg",
+        "breed": "Yellow Lab",
+        "age": 84,
+        "gender": "m",
+        "size": "l",
+        "age_stage": "s"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 12,
+    "fields": {
+        "name": "Captain Jack",
+        "image_filename": "12.jpg",
+        "breed": "Pug Mix",
+        "age": 66,
+        "gender": "m",
+        "size": "s",
+        "age_stage": "a"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 13,
+    "fields": {
+        "name": "Gypsy",
+        "image_filename": "13.jpg",
+        "breed": "Golden Retriever",
+        "age": 30,
+        "gender": "f",
+        "size": "l",
+        "age_stage": "y"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 14,
+    "fields": {
+        "name": "Bella",
+        "image_filename": "14.jpg",
+        "breed": "Collie",
+        "age": 14,
+        "gender": "f",
+        "size": "l",
+        "age_stage": "y"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 15,
+    "fields": {
+        "name": "Gizmo",
+        "image_filename": "15.jpg",
+        "breed": "English Springer Spaniel",
+        "age": 78,
+        "gender": "m",
+        "size": "l",
+        "age_stage": "s"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 16,
+    "fields": {
+        "name": "Prince",
+        "image_filename": "16.jpg",
+        "breed": "unknown",
+        "age": 81,
+        "gender": "m",
+        "size": "s",
+        "age_stage": "s"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 17,
+    "fields": {
+        "name": "Sadie",
+        "image_filename": "17.jpg",
+        "breed": "Springer Spaniel",
+        "age": 50,
+        "gender": "f",
+        "size": "l",
+        "age_stage": "a"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 18,
+    "fields": {
+        "name": "Zumba",
+        "image_filename": "18.jpg",
+        "breed": "Yorkshire Terrier",
+        "age": 11,
+        "gender": "m",
+        "size": "s",
+        "age_stage": "b"
+    }
+},
+{
+    "model": "pugorugh.dog",
+    "pk": 19,
+    "fields": {
+        "name": "Elsa",
+        "image_filename": "19.jpg",
+        "breed": "Husky",
+        "age": 2,
+        "gender": "f",
+        "size": "m",
+        "age_stage": "b"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add Token",
+        "content_type": 7,
+        "codename": "add_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change Token",
+        "content_type": 7,
+        "codename": "change_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete Token",
+        "content_type": 7,
+        "codename": "delete_token"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add dog",
+        "content_type": 8,
+        "codename": "add_dog"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change dog",
+        "content_type": 8,
+        "codename": "change_dog"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete dog",
+        "content_type": 8,
+        "codename": "delete_dog"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add user dog",
+        "content_type": 9,
+        "codename": "add_userdog"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change user dog",
+        "content_type": 9,
+        "codename": "change_userdog"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete user dog",
+        "content_type": 9,
+        "codename": "delete_userdog"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can add user pref",
+        "content_type": 10,
+        "codename": "add_userpref"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can change user pref",
+        "content_type": 10,
+        "codename": "change_userpref"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can delete user pref",
+        "content_type": 10,
+        "codename": "delete_userpref"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$VWN65kocHflw$W0h38dNOdBariwb0Zn0nOQZRiRMjy32WghDwcshfyd4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test_user",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2018-02-14T17:09:43.668Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "authtoken.token",
+    "pk": "588130ffccc4c4157ed427173d800eb986c64979",
+    "fields": {
+        "user": 1,
+        "created": "2018-02-14T17:09:44.017Z"
+    }
+},
+{
+    "model": "pugorugh.userdog",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "dog": 2,
+        "status": "l"
+    }
+},
+{
+    "model": "pugorugh.userdog",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "dog": 4,
+        "status": "l"
+    }
+},
+{
+    "model": "pugorugh.userdog",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "dog": 6,
+        "status": "d"
+    }
+},
+{
+    "model": "pugorugh.userdog",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "dog": 7,
+        "status": "d"
+    }
+},
+{
+    "model": "pugorugh.userpref",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "age": "y,b,a",
+        "gender": "f,m",
+        "size": "l,s,m"
+    }
+}
+]
