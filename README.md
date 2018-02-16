@@ -44,4 +44,9 @@ Version 3.6.0
 - Login using superuser name and password
 - Set user preferences
 - Mark some dogs as liked, disliked, and undecided.
-- Test API requests using Postman.
+
+# Testing
+
+- Run tests using coverage.py: `coverage run --source='.' manage.py test menu`
+- Generate report: `coverage report -m`
+- Test API endpoints using Postman.
