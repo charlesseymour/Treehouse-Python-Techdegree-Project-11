@@ -30,6 +30,7 @@ def main():
         else:
             print(serializer.errors)
 
+
 if __name__ == '__main__':
     environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
     django.setup()

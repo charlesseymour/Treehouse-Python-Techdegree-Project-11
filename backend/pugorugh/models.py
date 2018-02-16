@@ -41,6 +41,7 @@ AGE_CHOICES = (
     (SENIOR, 'Senior'),
 )
 
+
 class Dog(models.Model):
     name = models.CharField(max_length=20)
     image_filename = models.CharField(max_length=200)
@@ -57,7 +58,7 @@ class Dog(models.Model):
         default=UNKNOWN
     )
     age_stage = models.CharField(max_length=1, default='b')
-    
+
     @property
     def get_age_stage(self):
         if self.age < 12:
@@ -68,20 +69,21 @@ class Dog(models.Model):
             return 'a'
         else:
             return 's'
-            
+
     def save(self, *args, **kwarg):
         self.age_stage = self.get_age_stage
         super(Dog, self).save(*args, **kwarg)
-    
-    
+
+
 class UserDog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     status = models.CharField(
-        max_length=1, 
+        max_length=1,
         choices=STATUS_CHOICES
     )
-    
+
+
 class UserPref(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     age = MultiSelectField(

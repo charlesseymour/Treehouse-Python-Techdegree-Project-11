@@ -4,7 +4,7 @@ from rest_framework import fields, serializers
 
 from . import models
 
-from .models import GENDER_CHOICES, SIZE_CHOICES, STATUS_CHOICES, AGE_CHOICES
+from .models import GENDER_CHOICES, SIZE_CHOICES, AGE_CHOICES
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,7 +20,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        
+
+
 class DogSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
@@ -33,13 +34,14 @@ class DogSerializer(serializers.ModelSerializer):
             'size',
         )
         model = models.Dog
-        
+
+
 class UserPrefSerializer(serializers.ModelSerializer):
     age = fields.MultipleChoiceField(choices=AGE_CHOICES)
     gender = fields.MultipleChoiceField(choices=GENDER_CHOICES)
     size = fields.MultipleChoiceField(choices=SIZE_CHOICES)
-    
-    class Meta:    
+
+    class Meta:
         extra_kwargs = {
             'user': {'write_only': True}
         }
@@ -49,7 +51,8 @@ class UserPrefSerializer(serializers.ModelSerializer):
             'size',
         )
         model = models.UserPref
-        
+
+
 class UserDogSerializer(serializers.ModelSerializer):
     class Meta:
         field = (
@@ -58,4 +61,3 @@ class UserDogSerializer(serializers.ModelSerializer):
             'status'
         )
         model = models.UserDog
-    

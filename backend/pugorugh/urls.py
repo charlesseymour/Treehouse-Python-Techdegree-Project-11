@@ -15,8 +15,10 @@ urlpatterns = format_suffix_patterns([
     url(r'^api/user/preferences/$', RetrieveUpdateUserPref.as_view(),
         name='userpref-detail'),
     url(r'^api/user/$', UserRegisterView.as_view(), name='register-user'),
-    url(r'^api/dog/(?P<pk>-?\d+)/(?P<reaction>liked|disliked|undecided)/next/$', GetNextDog.as_view(), name='next-detail'),
-    url(r'^api/dog/(?P<pk>\d+)/(?P<reaction>liked|disliked|undecided)/$', ReactToDog.as_view(), name='react-update'),
+    url(r'^api/dog/(?P<pk>-?\d+)/(?P<reaction>liked|disliked|undecided)/next/$',
+        GetNextDog.as_view(), name='next-detail'),
+    url(r'^api/dog/(?P<pk>\d+)/(?P<reaction>liked|disliked|undecided)/$',
+        ReactToDog.as_view(), name='react-update'),
     url(r'^favicon\.ico$',
         RedirectView.as_view(
             url='/static/icons/favicon.ico',
