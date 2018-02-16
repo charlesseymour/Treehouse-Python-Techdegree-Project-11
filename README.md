@@ -47,6 +47,6 @@ Version 3.6.0
 
 # Testing
 
-- Run tests using coverage.py: `coverage run --source='.' manage.py test menu`
+- Run tests using coverage.py: `coverage run --source='.' manage.py test pugorugh`
 - Generate report: `coverage report -m`
 - Test API endpoints using Postman.
